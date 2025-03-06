@@ -15,6 +15,8 @@ int main(void)
     hardware.Configure();
     hardware.Init();
 
+    float adcVal;
+
     Led led1;
     //Initialize led1. We'll plug it into pin 28.
     //false here indicates the value is uninverted
@@ -34,7 +36,8 @@ int main(void)
     for(;;)
     {
         // Set the onboard LED to the value we read from the knob
-        led1.Set(hardware.adc.GetFloat(0));
+        adcVal = hardware.adc.GetFloat(0);
+        led1.Set(adcVal);
 
         //Update the led to reflect the set value
         led1.Update();
